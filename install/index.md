@@ -173,6 +173,24 @@ The development server can now hopefully be run with:
 The server will be accessible as <http://localhost:3000/>. You can run with -r
 in order for the server to automatically restart when you update the code.
 
+### 8. Check it's working - run test suite
+
+You can run the unit tests by running the following command in the
+`fixmystreet` directory:
+
+{% highlight bash %}
+# do NOT run on a live site
+bin/cron-wrapper prove -r t
+{% endhighlight %}
+
+These currently require that the fixmystreet cobrand is enabled in the
+`ALLOWED_COBRANDS` setting, and also might assume other config is set up
+correctly. Note that this may leave entries in your database at the moment and
+should not be run on a live site.
+
+The `master` branch of the repository should always be passing all tests for
+our developers and on mySociety's servers.
+
 
 ### Post-install: Things you might want to change
 
@@ -224,24 +242,6 @@ distribution's packaging system.
 
 At this point you be able to restart the webserver and see your FixMyStreet
 installation at the configured URL.
-
-#### Check it's working
-
-You can run the unit tests by running the following command in the
-`fixmystreet` directory:
-
-{% highlight bash %}
-# do NOT run on a live site
-bin/cron-wrapper prove -r t
-{% endhighlight %}
-
-These currently require that the fixmystreet cobrand is enabled in the
-`ALLOWED_COBRANDS` setting, and also might assume other config is set up
-correctly. Note that this may leave entries in your database at the moment and
-should not be run on a live site.
-
-The `master` branch of the repository should always be passing all tests for
-our developers and on mySociety's servers.
 
 ### Common Problems
 
