@@ -189,7 +189,8 @@ correctly. Note that this may leave entries in your database at the moment and
 should not be run on a live site.
 
 The `master` branch of the repository should always be passing all tests for
-our developers and on mySociety's servers.
+our developers, on mySociety's servers and on
+[Travis](https://travis-ci.org/mysociety/fixmystreet).
 
 
 ### Post-install: Things you might want to change
