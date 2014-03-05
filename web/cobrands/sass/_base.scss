@@ -753,7 +753,7 @@ a:hover.button-left {
 
 .big-green-banner {
   position: relative;
-  z-index:1000;
+  z-index:1;
   top:-1.75em;
   background: $col_click_map;
   color: #fff;
@@ -777,7 +777,7 @@ a:hover.button-left {
 
 .banner {
   position: relative;
-  z-index:1100;
+  z-index:1;
   p {
     position: absolute;
     top:-1.95em;
