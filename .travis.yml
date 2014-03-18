@@ -11,7 +11,11 @@ perl:
   - "5.14"
 
 env:
-  - secure: "lm7DasPP+iHVI3ZIjTX7tQMfiEsGBJGM2HrPO8AByZWJohL2gd024ngevXXkBT0Qln5z+RhGJOd+QWjvKmuhfCBPveL8IX4v0KHUTfxrjBoBSB09cb4UNdExWu7HPO63RsbhpQdaIoIYIpr1eBb9txBCbGD9aYepuqIKIj/QHwM="
+  global:
+    - secure: "lm7DasPP+iHVI3ZIjTX7tQMfiEsGBJGM2HrPO8AByZWJohL2gd024ngevXXkBT0Qln5z+RhGJOd+QWjvKmuhfCBPveL8IX4v0KHUTfxrjBoBSB09cb4UNdExWu7HPO63RsbhpQdaIoIYIpr1eBb9txBCbGD9aYepuqIKIj/QHwM="
+  matrix:
+    - TESTS="echo t/app/controller"
+    - TESTS="find t -name '*.t' -type f | grep -v t/app/controller"
 
 before_install:
   - sudo apt-get update -qq
@@ -32,6 +36,6 @@ before_script:
   - ./bin/cron-wrapper ./bin/make_po FixMyStreet-EmptyHomes
   - ./bin/cron-wrapper ./bin/make_emptyhomes_welsh_po
   - commonlib/bin/gettext-makemo FixMyStreet
-script: "bin/cron-wrapper perl /usr/bin/prove -rl t"
+script: 'bin/cron-wrapper perl /usr/bin/prove -r $(eval "$TESTS")'
 after_script:
   - .travis/after_script
