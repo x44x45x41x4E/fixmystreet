@@ -13,6 +13,35 @@ use mySociety::Web qw(ent);
 use constant COUNCIL_ID_BARNET     => 2489;
 use constant MAX_LINE_LENGTH       => 132;
 
+sub barnet_categories {
+    # The values here are KBIDs from Barnet's system: see bin/send-reports for formatting
+    if (mySociety::Config::get('STAGING_SITE')) { # note staging site must use different KBIDs
+        return {
+             'Street scene misc'        => 14 # for test
+        }
+    } else {
+        return {
+            'Accumulated Litter'        => 349,
+            'Dog Bin'                   => 203,
+            'Dog Fouling'               => 288,
+            'Drain or Gully'            => 256,
+            'Fly Posting'               => 465,
+            'Fly Tipping'               => 449,
+            'Graffiti'                  => 292,
+            'Gritting'                  => 200,
+            'Highways'                  => 186,
+            'Litter Bin Overflowing'    => 205,
+            'Manhole Cover'             => 417,
+            'Overhanging Foliage'       => 421,
+            'Pavement Damaged/Cracked'  => 195,
+            'Pothole'                   => 204,
+            'Road Sign'                 => 80,
+            'Roadworks'                 => 246,
+            'Street Lighting'           => 251,
+        };
+    }
+}
+
 sub construct_message {
     my %h = @_;
     my $message = <<EOF;
@@ -40,7 +69,7 @@ sub send {
     my $err_msg = "";
 
     my $default_kbid = 14; # This is the default, "Street Scene"
-    my $kbid = sprintf( "%050d",  Utils::barnet_categories()->{$h{category}} || $default_kbid);
+    my $kbid = sprintf( "%050d",  barnet_categories()->{$h{category}} || $default_kbid);
 
     my $geo_code = "$h{easting} $h{northing}"; 
 

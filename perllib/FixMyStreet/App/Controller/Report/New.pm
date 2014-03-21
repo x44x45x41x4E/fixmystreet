@@ -74,7 +74,6 @@ partial
 
 =cut
 
-use constant COUNCIL_ID_BARNET => 2489;
 use constant COUNCIL_ID_BROMLEY => 2482;
 
 sub report_new : Path : Args(0) {
@@ -624,14 +623,6 @@ sub setup_categories_and_bodies : Private {
             _('Empty public building - school, hospital, etc.')
         );
 
-    } elsif ($first_area->{id} == COUNCIL_ID_BARNET) {
-
-        $bodies_to_list{ $first_body->id } = 1;
-        @category_options = (
-            _('-- Pick a category --'),
-            sort keys %{ Utils::barnet_categories() }
-        );
-
     } else {
 
         # keysort does not appear to obey locale so use strcoll (see i18n.t)
@@ -847,13 +838,6 @@ sub process_report : Private {
             $report->extra( \%extra );
         }
 
-    } elsif ( $first_area->{id} == COUNCIL_ID_BARNET ) {
-
-        unless ( exists Utils::barnet_categories()->{ $report->category } ) {
-            $c->stash->{field_errors}->{category} = _('Please choose a category');
-        }
-        $report->bodies_str( $first_body->id );
-        
     } elsif ( $report->category ) {
 
         # FIXME All contacts were fetched in setup_categories_and_bodies,
