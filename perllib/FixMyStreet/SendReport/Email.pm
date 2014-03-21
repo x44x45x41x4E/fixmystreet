@@ -22,7 +22,6 @@ sub build_recipient_list {
         my ($body_email, $confirmed, $note) = ( $contact->email, $contact->confirmed, $contact->note );
 
         $body_email = essex_contact($row->latitude, $row->longitude) if $body->areas->{2225};
-        $body_email = oxfordshire_contact($row->latitude, $row->longitude) if $body->areas->{2237} && $body_email eq 'SPECIAL';
 
         unless ($confirmed) {
             $all_confirmed = 0;
@@ -128,16 +127,6 @@ sub essex_contact {
     return "highways.$email\@essexcc.gov.uk";
 }
 
-# Oxfordshire has different contact addresses depending upon the district
-sub oxfordshire_contact {
-    my $district = _get_district_for_contact(@_);
-    my $email;
-    $email = 'northernarea' if $district == 2419 || $district == 2420 || $district == 2421;
-    $email = 'southernarea' if $district == 2417 || $district == 2418;
-    die "Returned district $district which is not in Oxfordshire!" unless $email;
-    return "$email\@oxfordshire.gov.uk";
-}
-
 sub _get_district_for_contact {
     my ( $lat, $lon ) = @_;
     my $district =
@@ -145,4 +134,5 @@ sub _get_district_for_contact {
     ($district) = keys %$district;
     return $district;
 }
+
 1;
