@@ -28,11 +28,13 @@ FixMyStreet::override_config {
     is_deeply $c->get_body_sender( $body ), { method => 'Email' }, 'defaults to email';
 
     $body_area->update({ area_id => 2481 }); # Croydon LBO
-    is_deeply $c->get_body_sender( $body ), { method => 'London' }, 'returns london report it if London borough';
+    is_deeply $c->get_body_sender( $body ), { method => 'Email' }, 'still email in the absence of anything';
+    $body->send_method('London');
+    is $c->get_body_sender( $body )->{method}, 'London', 'returns london if set to it';
 };
 
 $body->send_method( 'TestMethod' );
-is $c->get_body_sender( $body )->{ method }, 'TestMethod', 'uses send_method in preference to London';
+is $c->get_body_sender( $body )->{ method }, 'TestMethod', 'uses send_method in preference to anything else';
 
 $body_area->update({ area_id => 1000 }); # Nothing
 is $c->get_body_sender( $body )->{ method }, 'TestMethod', 'uses send_method in preference to Email';

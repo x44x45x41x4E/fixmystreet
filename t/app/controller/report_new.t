@@ -39,14 +39,16 @@ my %contact_params = (
     note => 'Created for test',
 );
 
-for my $body (
+my @bodies = (
     { id => 2651, name => 'City of Edinburgh Council' },
     { id => 2226, name => 'Gloucestershire County Council' },
     { id => 2326, name => 'Cheltenham Borough Council' },
     { id => 2482, name => 'Bromley Council' },
     { id => 2240, name => 'Staffordshire County Council' },
     { id => 2434, name => 'Lichfield District Council' },
-) {
+    { id => 2504, name => 'Westminster City Council' },
+);
+for my $body (@bodies) {
     $mech->create_body_ok($body->{id}, $body->{name});
 }
 
@@ -96,6 +98,12 @@ my $contact7 = FixMyStreet::App->model('DB::Contact')->find_or_create( {
     category => 'Street lighting',
     email => 'highways@example.com',
 } );
+my $contact8 = FixMyStreet::App->model('DB::Contact')->find_or_create( {
+    %contact_params,
+    body_id => 2504, # Westminster
+    category => 'Street lighting',
+    email => 'highways@westminster.example.com',
+} );
 ok $contact1, "created test contact 1";
 ok $contact2, "created test contact 2";
 ok $contact3, "created test contact 3";
@@ -103,6 +111,7 @@ ok $contact4, "created test contact 4";
 ok $contact5, "created test contact 5";
 ok $contact6, "created test contact 6";
 ok $contact7, "created test contact 7";
+ok $contact8, "created test contact 8";
 
 # test that the various bit of form get filled in and errors correctly
 # generated.
@@ -1477,12 +1486,9 @@ subtest "categories from deleted bodies shouldn't be visible for new reports" =>
     };
 };
 
-$contact1->delete;
-$contact2->delete;
-$contact3->delete;
-$contact4->delete;
-$contact5->delete;
-$contact6->delete;
-$contact7->delete;
-
-done_testing();
+END {
+    for my $body (@bodies) {
+        $mech->delete_body($body->{id});
+    }
+    done_testing();
+};

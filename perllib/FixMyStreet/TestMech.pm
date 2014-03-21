@@ -531,6 +531,15 @@ sub get_ok_json {
     return decode_json( $res->content );
 }
 
+sub delete_body {
+    my $mech = shift;
+    my $body_id = shift;
+
+    FixMyStreet::App->model('DB::Contact')->search( { body_id => $body_id } )->delete;
+    FixMyStreet::App->model('DB::BodyArea')->search( { body_id => $body_id } )->delete;
+    FixMyStreet::App->model('DB::Body')->search( { id => $body_id } )->delete;
+}
+
 sub delete_problems_for_body {
     my $mech = shift;
     my $body = shift;

@@ -14,7 +14,6 @@ my $test_ward = 20723;
 
 $mech->create_body_ok($test_council, 'City of Edinburgh Council');
 
-$mech->delete_user( $test_user );
 my $user = FixMyStreet::App->model('DB::User')->create( {
     email => $test_user,
     password => $test_pass,
@@ -683,4 +682,7 @@ sub delete_problems {
       ->search( { bodies_str => $test_council } )->delete();
 }
 
-done_testing;
+END {
+    $mech->delete_user( $user ) if $user;
+    done_testing;
+}

@@ -35,6 +35,15 @@ sub send {
     return if mySociety::Config::get('STAGING_SITE');
     my ( $self, $row, $h ) = @_;
 
+    # Look up category value for key in request
+    my $body = ( values %{$self->bodies} )[0];
+    my $contact = FixMyStreet::App->model("DB::Contact")->find( {
+        deleted => 0,
+        body_id => $body->id,
+        category => $row->category
+    } );
+    my $type = $contact->email;
+
     $h->{message} = construct_message( %$h );
     my $phone = $h->{phone};
     my $mobile = '';
@@ -46,7 +55,7 @@ sub send {
     my %params = (
         Key => mySociety::Config::get('LONDON_REPORTIT_KEY'),
         Signature => Digest::MD5::md5_hex( $h->{confirmed} . mySociety::Config::get('LONDON_REPORTIT_SECRET') ),
-        Type => Utils::london_categories()->{$h->{category}},
+        Type => $type,
         RequestDate => $h->{confirmed},
         RequestMethod => 'Web',
         ExternalId => $h->{url},

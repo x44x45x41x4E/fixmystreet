@@ -624,18 +624,12 @@ sub setup_categories_and_bodies : Private {
             _('Empty public building - school, hospital, etc.')
         );
 
-    } elsif ($first_area->{id} != COUNCIL_ID_BROMLEY && $first_area->{type} eq 'LBO') {
+    } elsif ($first_area->{id} == COUNCIL_ID_BARNET) {
 
         $bodies_to_list{ $first_body->id } = 1;
-        my @local_categories;
-        if ($first_area->{id} == COUNCIL_ID_BARNET) {
-            @local_categories =  sort keys %{ Utils::barnet_categories() }
-        } else {
-            @local_categories =  sort keys %{ Utils::london_categories() }            
-        }
         @category_options = (
             _('-- Pick a category --'),
-            @local_categories 
+            sort keys %{ Utils::barnet_categories() }
         );
 
     } else {
@@ -860,13 +854,6 @@ sub process_report : Private {
         }
         $report->bodies_str( $first_body->id );
         
-    } elsif ( $first_area->{id} != COUNCIL_ID_BROMLEY && $first_area->{type} eq 'LBO') {
-        
-        unless ( Utils::london_categories()->{ $report->category } ) {
-            $c->stash->{field_errors}->{category} = _('Please choose a category');
-        }
-        $report->bodies_str( $first_body->id );
-
     } elsif ( $report->category ) {
 
         # FIXME All contacts were fetched in setup_categories_and_bodies,

@@ -141,7 +141,6 @@ subtest "Submit a correct entry" => sub {
         photo         => '',
         phone         => '',
         may_show_name => '1',
-        category      => '-- Pick a category --',
       },
       "check imported fields are shown";
 
@@ -175,7 +174,6 @@ subtest "Submit a correct entry" => sub {
         photo         => '',
         phone         => '',
         may_show_name => '1',
-        category      => '-- Pick a category --',
       },
       "check imported fields are shown";
 
@@ -192,7 +190,6 @@ subtest "Submit a correct entry" => sub {
                     detail        => 'This is a test report',
                     phone         => '01234 567 890',
                     may_show_name => '1',
-                    category      => 'Street lighting',
                 }
             },
             "Update details and save"
@@ -263,7 +260,6 @@ subtest "Submit a correct entry (with location)" => sub {
         photo         => '',
         phone         => '',
         may_show_name => '1',
-        category      => '-- Pick a category --',
       },
       "check imported fields are shown";
 
@@ -280,7 +276,6 @@ subtest "Submit a correct entry (with location)" => sub {
                     detail        => 'This is a test report ll',
                     phone         => '01234 567 890',
                     may_show_name => '1',
-                    category      => 'Street lighting',
                 }
             },
             "Update details and save"
