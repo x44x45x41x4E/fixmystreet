@@ -33,9 +33,15 @@ sub disambiguate_location {
     $town = '' if $string =~ /orpington/i;
 
     # If "Beckenhham" (but NOT "Beckenham Road") passed, then set town to BR3
+    # We do this with "Bromley Road" too, which is within Beckenham.
     # We do this with the Knoll too, avoiding Bing geocoding bug which prefers
     # "Knole, Sevenoaks"...
-    if ($string =~ /beckenham (?!road|rd)/i or $string =~/\bknoll\b/i) {
+    # In addition, Bromley Road
+    if (
+        $string =~ /beckenham (?!road|rd)/i  # ?! lookahead NOT followed by Road
+        or $string =~/\bknoll\b/i
+        or $string =~/bromley (?:road|rd)/i  # IS followed by Road
+    ) {
         $town = 'BR3';
     }
     return {
