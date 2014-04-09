@@ -31,6 +31,13 @@ sub disambiguate_location {
     # Bromley by Bow.
     $town .= ', BR1' if $string =~ /^high\s+st(reet)?$/i;
     $town = '' if $string =~ /orpington/i;
+
+    # If "Beckenhham" (but NOT "Beckenham Road") passed, then set town to BR3
+    # We do this with the Knoll too, avoiding Bing geocoding bug which prefers
+    # "Knole, Sevenoaks"...
+    if ($string =~ /beckenham (?!road|rd)/i or $string =~/\bknoll\b/i) {
+        $town = 'BR3';
+    }
     return {
         %{ $self->SUPER::disambiguate_location() },
         town => $town,
