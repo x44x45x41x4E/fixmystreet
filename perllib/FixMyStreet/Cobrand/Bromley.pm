@@ -101,5 +101,46 @@ sub title_list {
     return ["MR", "MISS", "MRS", "MS", "DR"];
 }
 
+sub open311_config {
+    my ($self, $row, $h, $params, $revert) = @_;
+
+    $$revert = 1;
+
+    my $extra = $row->extra;
+    if ( $row->used_map || ( !$row->used_map && !$row->postcode ) ) {
+        push @$extra, { name => 'northing', value => $h->{northing} };
+        push @$extra, { name => 'easting', value => $h->{easting} };
+    }
+    push @$extra, 
+        { name => 'report_url',
+          value => $h->{url} },
+        { name => 'service_request_id_ext',
+          value => $row->id },
+        { name => 'report_title',
+          value => $row->title },
+        { name => 'public_anonymity_required',
+          value => $row->anonymous ? 'TRUE' : 'FALSE' },
+        { name => 'email_alerts_requested',
+          value => 'FALSE' }, # always false as can never request them
+        { name => 'requested_datetime',
+          value => DateTime::Format::W3CDTF->format_datetime($row->confirmed->set_nanosecond(0)) },
+        { name => 'email',
+          value => $row->user->email };
+
+    # make sure we have last_name attribute present in row's extra, so
+    # it is passed correctly to Bromley as attribute[]
+    if ( $row->cobrand ne 'bromley' ) {
+        my ( $firstname, $lastname ) = ( $row->name =~ /(\w+)\.?\s+(.+)/ );
+        push @$extra, { name => 'last_name', value => $lastname };
+    }
+
+    $row->extra( $extra );
+
+    $params->{always_send_latlong} = 0;
+    $params->{send_notpinpointed} = 1;
+    $params->{use_service_as_deviceid} = 0;
+    $params->{extended_description} = 0;
+}
+
 1;
 

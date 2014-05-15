@@ -51,5 +51,38 @@ sub is_default {
     return $self->moniker eq 'default';
 }
 
+=head2 call_cobrand_hook
+
+  $cobrand->call_cobrand_hook(foo => 1,2,3); # calls $cobrand->foo(1,2,3) if it exists
+
+=cut
+
+sub call_cobrand_hook {
+    my ($self, $method_name, @args) = @_;
+    my $method = $self->can($method_name) or return;
+    return $self->$method(@args);
+}
+
+=head2 get_handler_for_problem
+
+    my $handler = $cobrand->get_handler_for_problem($row);
+
+or
+
+    my $handler = $cobrand_class->get_handler_for_problem($row);
+
+The default behaviour is to just return the cobrand object (or an instance of
+the cobrand class).
+
+However some cobrands, such as ::UK may choose to defer problems to subclasses,
+based on C<bodies_str> etc.
+
+=cut
+
+sub get_handler_for_problem {
+    my ($self, $row) = @_;
+    return ref $self ? $self : $self->new;
+}
+
 1;
 

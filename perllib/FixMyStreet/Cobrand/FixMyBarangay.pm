@@ -59,5 +59,17 @@ sub send_questionnaires {
 # let staff hide reports in their own barangay
 sub users_can_hide { 1 }
 
+sub open311_config {
+    my ($self, $row, $h, $params, $revert) = @_;
+
+    $$revert = 1;
+}
+
+sub open311_pre_send {
+    my ($self, $row, $open311) = @_;
+    # FixMyBarangay endpoints expect external_id as an attribute, as do Oxfordshire
+    $row->extra( [ { 'name' => 'external_id', 'value' => $row->id  } ]  );
+}
+
 1;
 

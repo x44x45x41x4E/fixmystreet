@@ -794,6 +794,12 @@ sub as_hashref {
     };
 }
 
+sub get_cobrand_handler {
+    my $self = shift;
+    my $cobrand_class = FixMyStreet::Cobrand->get_class_for_moniker( $self->cobrand );
+    return $cobrand_class->get_handler_for_problem($self);
+}
+
 # we need the inline_constructor bit as we don't inherit from Moose
 __PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
