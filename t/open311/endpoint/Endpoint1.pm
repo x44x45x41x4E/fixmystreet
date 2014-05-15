@@ -84,7 +84,7 @@ sub post_service_request {
         description => $args->{description},
         agency_responsible => '',
         requested_datetime => DateTime->now(),
-        updated_datetime => DateTime->now(),
+        updated_datetime => undef,
         address => $args->{address_string} // '',
         address_id => $args->{address_id} // '',
         media_url => $args->{media_url} // '',
