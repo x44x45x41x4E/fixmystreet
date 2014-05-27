@@ -318,7 +318,7 @@ sub council_rss_alert_options {
     return ( \@options, @reported_to_options ? \@reported_to_options : undef );
 }
 
-sub get_handler_for_problem {
+sub get_body_handler_for_problem {
     my ($self, $row) = @_;
 
     my $subclass;

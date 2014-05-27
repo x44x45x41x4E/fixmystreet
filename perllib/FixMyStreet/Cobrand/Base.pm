@@ -63,13 +63,15 @@ sub call_cobrand_hook {
     return $self->$method(@args);
 }
 
-=head2 get_handler_for_problem
+=head2 get_body_handler_for_problem
 
-    my $handler = $cobrand->get_handler_for_problem($row);
+Returns a cobrand for the body that a problem was logged against.
+(See L<FixMyStreet::DB::Result::Problem/get_cobrand_logged>
+and L<FixMyStreet::DB::Result::Problem/get_cobrand_body_handler>
+for more details on the possible distinctions here.)
 
-or
-
-    my $handler = $cobrand_class->get_handler_for_problem($row);
+    my $handler = $cobrand->get_body_handler_for_problem($row);
+    my $handler = $cobrand_class->get_body_handler_for_problem($row);
 
 The default behaviour is to just return the cobrand object (or an instance of
 the cobrand class).
@@ -79,7 +81,7 @@ based on C<bodies_str> etc.
 
 =cut
 
-sub get_handler_for_problem {
+sub get_body_handler_for_problem {
     my ($self, $row) = @_;
     return ref $self ? $self : $self->new;
 }

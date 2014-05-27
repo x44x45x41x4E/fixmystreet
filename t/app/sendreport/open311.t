@@ -272,7 +272,7 @@ BEGIN {
         # no need to actually discard, as we're in transaction anyway
     };
 
-    around get_cobrand_handler => sub {
+    around get_cobrand_body_handler => sub {
         my $orig = shift;
         my ($self) = @_;
         my $handler = $self->$orig();

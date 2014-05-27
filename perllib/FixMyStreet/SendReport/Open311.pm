@@ -32,7 +32,7 @@ sub send {
         );
         my $revert = 0; # To rollback temporary changes made by this function
 
-        my $cobrand = $row->get_cobrand_handler();
+        my $cobrand = $row->get_cobrand_body_handler();
 
         $cobrand->call_cobrand_hook(open311_config => $row, $h, \%open311_params, \$revert);
 
