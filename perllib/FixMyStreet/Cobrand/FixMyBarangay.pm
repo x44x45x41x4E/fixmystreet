@@ -60,9 +60,9 @@ sub send_questionnaires {
 sub users_can_hide { 1 }
 
 sub open311_config {
-    my ($self, $row, $h, $params, $revert) = @_;
+    my ($self, $row, $h, $params) = @_;
 
-    $$revert = 1;
+    $params->{revert}++;
 }
 
 sub open311_pre_send {

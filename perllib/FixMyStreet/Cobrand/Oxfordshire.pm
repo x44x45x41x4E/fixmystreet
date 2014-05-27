@@ -62,9 +62,9 @@ sub users_can_hide { return 1; }
 sub default_show_name { 0 }
 
 sub open311_config {
-    my ($self, $row, $h, $params, $revert) = @_;
+    my ($self, $row, $h, $params) = @_;
 
-    $$revert = 1;
+    $params->{revert}++;
 
     my $extra = $row->extra;
     push @$extra, { name => 'external_id', value => $row->id };

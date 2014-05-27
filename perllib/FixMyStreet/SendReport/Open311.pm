@@ -30,11 +30,12 @@ sub send {
             use_service_as_deviceid => 0,
             extended_description    => 1,
         );
-        my $revert = 0; # To rollback temporary changes made by this function
 
         my $cobrand = $row->get_cobrand_body_handler();
 
-        $cobrand->call_cobrand_hook(open311_config => $row, $h, \%open311_params, \$revert);
+        $cobrand->call_cobrand_hook(open311_config => $row, $h, \%open311_params);
+
+        my $revert = delete $open311_params{revert}; # To rollback temporary changes made by this function
 
         # FIXME: we've already looked this up before
         my $contact = FixMyStreet::App->model("DB::Contact")->find( {
@@ -54,7 +55,7 @@ sub send {
 
         my $open311 = Open311->new( %open311_params );
 
-        $cobrand->call_cobrand_hook(open311_pre_send => $row, $open311, \$revert);
+        $cobrand->call_cobrand_hook(open311_pre_send => $row, $open311);
 
         my $resp = $open311->send_service_request( $row, $h, $contact->email );
 

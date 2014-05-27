@@ -102,9 +102,9 @@ sub title_list {
 }
 
 sub open311_config {
-    my ($self, $row, $h, $params, $revert) = @_;
+    my ($self, $row, $h, $params) = @_;
 
-    $$revert = 1;
+    $params->{revert}++;
 
     my $extra = $row->extra;
     if ( $row->used_map || ( !$row->used_map && !$row->postcode ) ) {
