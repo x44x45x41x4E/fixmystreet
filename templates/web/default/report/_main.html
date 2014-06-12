@@ -32,7 +32,7 @@
             <label for="problem_hide">Hide report completely?</label>
             <input type="checkbox" class="hide-document" name="problem_hide">
             <br />
-            <label for="problem_show_name">Show name publically?</label>
+            <label for="problem_show_name">Show name publicly?</label>
             <input type="checkbox" name="problem_show_name" [% problem.anonymous ? '' : 'checked' %]>
             [% IF problem.photo or original.photo %]
                 <br />

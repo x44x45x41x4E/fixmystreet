@@ -12,7 +12,7 @@
                 <div class="moderate-edit">
                     <label for="update_hide">Hide update completely?</label>
                     <input type="checkbox" class="hide-document" name="update_hide">
-                    <label for="update_show_name">Show name publically?</label>
+                    <label for="update_show_name">Show name publicly?</label>
                     <input type="checkbox" name="update_show_name" [% update.anonymous ? '' : 'checked' %]>
                     [% IF update.photo or original_update.photo %]
                         <label for="update_show_photo">Show Photo?</label>
