@@ -19,13 +19,13 @@ BASE_URL: 'http://www.example.org'
 #   BASE_URL: 'http://localhost:3000'
 
 # Email domain used for emails, and contact name/email for admin use.
-EMAIL_DOMAIN: 'example.org'
-CONTACT_EMAIL: 'team@example.org'
-CONTACT_NAME: 'FixMyStreet'
+EMAIL_DOMAIN: 'gorated.com'
+CONTACT_EMAIL: 'rommel@gorated.com'
+CONTACT_NAME: 'FixMyKalye team'
 # Address used for emails you don't expect a reply to (e.g. confirmation
 # emails); can be same as CONTACT_EMAIL above, of course, if you don't have a
 # special address.
-DO_NOT_REPLY_EMAIL: 'do-not-reply@example.org'
+DO_NOT_REPLY_EMAIL: 'rommel@gorated.org'
 
 # Whether this is a development site or not. It will mean e.g. templates/
 # CSS modified times aren't cached
@@ -38,7 +38,7 @@ SEND_REPORTS_ON_STAGING: 0
 
 # What to use as front page/alert example places placeholder
 # Defaults to High Street, Main Street
-EXAMPLE_PLACES: [ 'High Street', 'Main Street' ]
+EXAMPLE_PLACES: [ 'Nicanor Reyes St.', 'C.M. Recto' ]
 
 # An array of languages for the site, in the following format:
 # <language code>,<pretty name>,<locale>
@@ -48,7 +48,7 @@ LANGUAGES:
 
 # If you're running an installation that is being used in a different time zone
 # from the server, you can set the time zone here (standard time zone string)
-TIME_ZONE: ""
+TIME_ZONE: "PH"
 
 # File locations for uploaded photos and cached geocoding results.
 UPLOAD_DIR: '../upload/'
@@ -69,8 +69,8 @@ GEO_CACHE: '../cache/'
 #   MAPIT_URL: 'http://global.mapit.mysociety.org/'
 # And then specify whichever type code have the boundaries you want:
 #   MAPIT_TYPES: [ 'O06' ]
-MAPIT_URL: ''
-MAPIT_TYPES: [ 'ZZZ' ]
+MAPIT_URL: 'http://global.mapit.mysociety.org/'
+MAPIT_TYPES: [ 'O06' ]
 
 # If you are using global MapIt, you might want to restrict FixMyStreet usage
 # to only one or more areas, rather than all O04, for example. Provide MapIt
@@ -78,8 +78,8 @@ MAPIT_TYPES: [ 'ZZZ' ]
 # generation those IDs are in.
 #   MAPIT_ID_WHITELIST: [ 240838, 246176, 246733 ]
 #   MAPIT_GENERATION: 2
-MAPIT_ID_WHITELIST: []
-MAPIT_GENERATION: 0
+MAPIT_ID_WHITELIST: [ 513600, 513682 ]
+MAPIT_GENERATION: 5
 
 # If your MapIt has the concept of council wards (subareas of councils, where
 # people can sign up for alerts, but not report things), then you can give the
@@ -143,7 +143,7 @@ MAP_TYPE: 'OSM'
 # This also allows development servers to map to different cobrands if needed,
 # using DNS subdomains for example.
 ALLOWED_COBRANDS:
-  - cobrand1
+  - fixmykalye
   - cobrand2: 'hostname_substring2'
   - cobrand3
 
