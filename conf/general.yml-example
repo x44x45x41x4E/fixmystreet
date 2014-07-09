@@ -70,7 +70,7 @@ GEO_CACHE: '../cache/'
 # And then specify whichever type code have the boundaries you want:
 #   MAPIT_TYPES: [ 'O06' ]
 MAPIT_URL: 'http://global.mapit.mysociety.org/'
-MAPIT_TYPES: [ 'O06', 'O10' ]
+MAPIT_TYPES: [ 'O06' ]
 
 # If you are using global MapIt, you might want to restrict FixMyStreet usage
 # to only one or more areas, rather than all O04, for example. Provide MapIt
@@ -78,7 +78,7 @@ MAPIT_TYPES: [ 'O06', 'O10' ]
 # generation those IDs are in.
 #   MAPIT_ID_WHITELIST: [ 240838, 246176, 246733 ]
 #   MAPIT_GENERATION: 2
-MAPIT_ID_WHITELIST: [ 513600, 513682 ]
+MAPIT_ID_WHITELIST: [513600, 513682]
 MAPIT_GENERATION: 4
 
 # If your MapIt has the concept of council wards (subareas of councils, where
