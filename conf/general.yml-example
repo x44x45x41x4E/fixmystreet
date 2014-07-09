@@ -144,8 +144,8 @@ MAP_TYPE: 'OSM'
 # using DNS subdomains for example.
 ALLOWED_COBRANDS:
   - fixmykalye
-  - cobrand2: 'hostname_substring2'
-  - cobrand3
+  # - cobrand2: 'hostname_substring2'
+  # - cobrand3
 
 # This is only used in "offensive report" emails to provide a link directly to
 # the admin interface. If wanted, set to the full URL of your admin interface.
