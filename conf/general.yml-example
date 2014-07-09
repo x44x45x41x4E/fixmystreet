@@ -158,7 +158,7 @@ ALL_REPORTS_PER_PAGE: 100
 
 # If you wish to send email through a SMTP server elsewhere, change this
 # variable.
-SMTP_SMARTHOST: 'localhost'
+SMTP_SMARTHOST: 'smtp.gmail.com'
 
 # Gaze is a world-wide service for population density lookups. You can leave
 # this as is.
