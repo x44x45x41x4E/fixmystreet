@@ -70,7 +70,7 @@ GEO_CACHE: '../cache/'
 # And then specify whichever type code have the boundaries you want:
 #   MAPIT_TYPES: [ 'O06' ]
 MAPIT_URL: 'http://global.mapit.mysociety.org/'
-MAPIT_TYPES: [ 'O06' ]
+MAPIT_TYPES: [ 'O06', 'O10' ]
 
 # If you are using global MapIt, you might want to restrict FixMyStreet usage
 # to only one or more areas, rather than all O04, for example. Provide MapIt
