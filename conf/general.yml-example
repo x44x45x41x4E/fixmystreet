@@ -14,7 +14,7 @@ FMS_DB_USER: 'fms'
 FMS_DB_PASS: ''
 
 # The base URL of the install.
-BASE_URL: 'http://www.example.org'
+BASE_URL: 'http://www.example.org'e
 # Use the below if you're using the Catalyst development server
 #   BASE_URL: 'http://localhost:3000'
 
@@ -158,7 +158,7 @@ ALL_REPORTS_PER_PAGE: 100
 
 # If you wish to send email through a SMTP server elsewhere, change this
 # variable.
-SMTP_SMARTHOST: 'smtp.gmail.com'
+SMTP_SMARTHOST: 'mail.globenet.com.ph'
 
 # Gaze is a world-wide service for population density lookups. You can leave
 # this as is.
