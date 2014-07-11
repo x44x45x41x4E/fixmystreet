@@ -8,8 +8,8 @@ use constant COUNCIL_ID_BROMLEY => 2482;
 sub path_to_web_templates {
     my $self = shift;
     return [
-        FixMyStreet->path_to( 'templates/web/fixmystreet.com' )->stringify,
-        FixMyStreet->path_to( 'templates/web/fixmystreet' )->stringify
+        FixMyKalye->path_to( 'templates/web/fixmykalye.com' )->stringify,
+        FixMyKalye->path_to( 'templates/web/fixmykalye' )->stringify
     ];
 }
 
