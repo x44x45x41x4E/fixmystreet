@@ -1,8 +1,5 @@
 package FixMyStreet::Cobrand::FixMyKalye;
 use base 'FixMyStreet::Cobrand::Default';
-
-use strict;
-use warnings;
 use mySociety::Gaze;
 
 use constant COUNCIL_ID_BROMLEY => 2482;

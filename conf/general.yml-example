@@ -143,7 +143,7 @@ MAP_TYPE: 'OSM'
 # This also allows development servers to map to different cobrands if needed,
 # using DNS subdomains for example.
 ALLOWED_COBRANDS:
-  - cobrand1
+  - fixmykalye
   # - cobrand2: 'hostname_substring2'
   # - cobrand3
 
