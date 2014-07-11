@@ -144,6 +144,7 @@ MAP_TYPE: 'OSM'
 # using DNS subdomains for example.
 ALLOWED_COBRANDS:
   - fixmykalye
+  - fixmykalye.com
   # - cobrand2: 'hostname_substring2'
   # - cobrand3
 
