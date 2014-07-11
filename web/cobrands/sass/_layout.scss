@@ -85,7 +85,7 @@ h1 {
       // position static as well so we fix lots of the z-index issues
       position:static;
     }
-  }   
+  }
 }
 
 // Resets a lot of the mobile styling. #site-header only used to help position logo on desktop
@@ -138,8 +138,8 @@ h1 {
       span {
         display: block;
         color: $nav_fg;
-        background: none;  
-        border-bottom: none;      
+        background: none;
+        border-bottom: none;
       }
       &#top-nav-privacy {
         display: none;
@@ -278,7 +278,7 @@ body.mappage {
     }
   }
 }
-//ie8 needs different stuff on .nav-wrapper so we 
+//ie8 needs different stuff on .nav-wrapper so we
 //have to define all the rest of it again as this resets
 //the z-index base yet again :S
 .ie8 {
