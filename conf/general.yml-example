@@ -14,7 +14,7 @@ FMS_DB_USER: 'fms'
 FMS_DB_PASS: ''
 
 # The base URL of the install.
-BASE_URL: 'http://www.example.org'e
+BASE_URL: 'http://www.example.org'
 # Use the below if you're using the Catalyst development server
 #   BASE_URL: 'http://localhost:3000'
 
@@ -116,7 +116,8 @@ BING_MAPS_API_KEY: ''
 #     google_country: <.ccTLD to restrict results to>
 #     lang: <language for results>
 #
-GEOCODING_DISAMBIGUATION: ''
+GEOCODING_DISAMBIGUATION:
+  country: 'PH'
 
 # The type of map you want to use. If left blank, the default is OpenStreetMap.
 # Other options are currently pretty UK specific, including "FMS" for UK
