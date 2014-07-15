@@ -159,7 +159,13 @@ ALL_REPORTS_PER_PAGE: 100
 # If you wish to send email through a SMTP server elsewhere, change this
 # variable.
 #Change to localhost when deploying in server
+# If you wish to send email through a SMTP server elsewhere, change these
+# variables. SMTP_TYPE should be one of '', 'ssl' or 'tls'.
 SMTP_SMARTHOST: 'mail.globenet.com.ph'
+SMTP_TYPE: ''
+SMTP_PORT: ''
+SMTP_USERNAME: ''
+SMTP_PASSWORD: ''
 
 # Gaze is a world-wide service for population density lookups. You can leave
 # this as is.
