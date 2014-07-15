@@ -45,7 +45,7 @@ server {
     rewrite ^/alerts/?$              /alert          permanent;
 
     location /mapit {
-        proxy_pass http://mapit.mysociety.org/;
+        proxy_pass http://global.mapit.mysociety.org/;
         proxy_set_header X-Real-IP $remote_addr;
     }
 
