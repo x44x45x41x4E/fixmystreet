@@ -1,6 +1,5 @@
 function set_map_config(perm) {
     var permalink_id;
-    var extent = new OpenLayers.Bounds(8, 44.5, 19, 50);
     if ($('#map_permalink').length) {
         permalink_id = 'map_permalink';
     }
@@ -11,10 +10,6 @@ function set_map_config(perm) {
         new OpenLayers.Control.PermalinkFMS(permalink_id),
         new OpenLayers.Control.PermalinkFMSz('osm_link', 'http://www.openstreetmap.org/'),
         new OpenLayers.Control.PanZoomFMS({id: 'fms_pan_zoom' })
-    ];
-    fixmystreet.map_options = [
-        new OpenLayers.Map.restrictExtent(extent),
-        new OpenLayers.Map.zoomToExtent(extent)
     ];
 }
 
