@@ -1,5 +1,5 @@
 $(function(){
-    fixmystreet.area_format = { fillColor: 'gray', fillOpacity: 0.75, strokeWidth: 1 strokeColor: 'black' }
+    fixmystreet.area_format = { fillColor: 'white', fillOpacity: 0.75, strokeWidth: 0, strokeColor: 'black' }
     // Vector layers must be added onload as IE sucks
     if ($.browser.msie) {
         $(window).load(fms_ph_onload);
@@ -9,7 +9,6 @@ $(function(){
 });
 
 function fms_ph_onload() {
-    var extent = new OpenLayers.Bounds(120.9,14.55,0 120.9,14.78,0 121.2,14.78,0 121.2,14.55,0 120.9,14.55,0);
     var area = new OpenLayers.Layer.Vector("KML", {
         strategies: [ new OpenLayers.Strategy.Fixed() ],
         protocol: new OpenLayers.Protocol.HTTP({
@@ -19,7 +18,6 @@ function fms_ph_onload() {
     });
     area.styleMap.styles['default'].defaultStyle = fixmystreet.area_format;
     fixmystreet.map.addLayer(area);
-    fixmystreet.map.setOptions({restrictedExtent: extent})
     //area.events.register('loadend', null, function(a,b,c) {
     //    area.styleMap.styles['default'].defaultStyle = fixmystreet.area_format;
     //});
