@@ -1,5 +1,5 @@
 $(function(){
-    fixmystreet.area_format = { fillColor: 'gray', fillOpacity: 0.75, strokeWidth: 1 strokeColor: 'black' }
+    fixmystreet.area_format = { fillColor: 'white', fillOpacity: 0.75, strokeWidth: 2 strokeColor: 'black' }
     // Vector layers must be added onload as IE sucks
     if ($.browser.msie) {
         $(window).load(fms_ph_onload);
@@ -10,7 +10,6 @@ $(function(){
 
 function fms_ph_onload() {
     var extent = new OpenLayers.Bounds(120.9,14.55,0 120.9,14.78,0 121.2,14.78,0 121.2,14.55,0 120.9,14.55,0);
-    fixmystreet.map.setOptions({restrictedExtent: extent})
     var area = new OpenLayers.Layer.Vector("KML", {
         strategies: [ new OpenLayers.Strategy.Fixed() ],
         protocol: new OpenLayers.Protocol.HTTP({
