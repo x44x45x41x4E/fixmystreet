@@ -19,7 +19,7 @@ function fms_ph_onload() {
             })
         });
 
-        area.styleMap.styles['default'].defaultStyle = { fillColor: '#0D4E86', fillOpacity: 0.75, strokeWidth: 0.50, strokeColor: 'black' };
+        area.styleMap.styles['default'].defaultStyle = area_format;
         fixmystreet.map.addLayer(area);
     }
 }
