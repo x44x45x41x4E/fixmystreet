@@ -9,18 +9,21 @@ $(function(){
 });
 
 function fms_ph_onload() {
-    if ( fixmystreet.area.length == 0)
-    {
-        var area = new OpenLayers.Layer.Vector("KML", {
+
+    var area = new OpenLayers.Layer.Vector("KML", {
         strategies: [ new OpenLayers.Strategy.Fixed() ],
         protocol: new OpenLayers.Protocol.HTTP({
             url: "/cobrands/fixmykalye/ph.kml",
             format: new OpenLayers.Format.KML()
             })
-        });
+    });
 
+    if ( fixmystreet.area.length == 0) //For individual areas
+    {
         area.styleMap.styles['default'].defaultStyle;
         fixmystreet.map.addLayer(area);
     }
+
     area.styleMap.styles['default'].defaultStyle = area_format;
+    fixmystreet.map.addLayer(area);
 }
