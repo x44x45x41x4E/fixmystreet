@@ -22,4 +22,5 @@ function fms_ph_onload() {
         area.styleMap.styles['default'].defaultStyle = area_format;
         fixmystreet.map.addLayer(area);
     }
+    area.styleMap.styles['default'].defaultStyle = area_format;
 }
