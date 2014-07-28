@@ -17,13 +17,6 @@ function fms_ph_onload() {
                 })
     });
 
-    if (fixmystreet.area.length)
-    {
-        area.styleMap.styles['default'].defaultStyle;
-    }else if (fixmystreet.area.length == 0) //For individual areas
-    {
-        area.styleMap.styles['default'].defaultStyle;
-    }
-
+    area.styleMap.styles['default'].defaultStyle;
     fixmystreet.map.addLayer(area);
 }
