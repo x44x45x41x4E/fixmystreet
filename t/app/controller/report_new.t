@@ -1003,7 +1003,7 @@ subtest "check that a lat/lon off coast leads to /around" => sub {
 
     is_deeply         #
       $mech->page_errors,
-      [ 'That location does not appear to be covered by a council; perhaps it is offshore or outside the country. Please try again.' ],
+      [ 'We have yet to include that location in our system. For the meantime, this service only accommodates reports about concerns within the boundaries of the local government that have helped us pioneer this project. ' ],
       "Found location error";
 
 };
@@ -1515,7 +1515,7 @@ subtest "extra google analytics code displayed on logged in problem creation" =>
         $mech->submit_form_ok(
             {
                 with_fields => {
-                    title         => "Test Report at café", 
+                    title         => "Test Report at café",
                     detail        => 'Test report details.',
                     photo         => '',
                     name          => 'Joe Bloggs',
