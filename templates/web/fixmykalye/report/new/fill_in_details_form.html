@@ -1,20 +1,8 @@
 <div id="report-a-problem-main">
     <h1>[% loc('Reporting a problem') %]</h1>
-
-    [% IF js %]
         <p id="councils_text">
-        [[%
-            tprintf(
-                loc('All the information you provide here will be sent to <strong>%s</strong>.'),
-                loc('the local council')
-            );
-        %]
-        [% loc('The subject and details of the problem will be public, plus your name if you give us permission.') %]
+             [% PROCESS 'report/new/councils_text.html' %]
         </p>
-    [% ELSE %]
-        [% PROCESS 'report/new/councils_text.html' %]
-    [% END %]
-
     [% IF c.cobrand.moniker != 'fixmybarangay' || ( c.user && c.user.from_body ) %]
     <div id="report-a-problem-sidebar">
         <!--
